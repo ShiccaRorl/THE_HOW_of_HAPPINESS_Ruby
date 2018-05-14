@@ -7,7 +7,7 @@ Bundler.require
 
 require 'csv'
 require 'THE_HOW_of_HAPPINESS/Happiness_scale.rb'
-require 'THE_HOW_of_HAPPINESS/Happiness_Behavior_Diagnostic_Test'
+require 'THE_HOW_of_HAPPINESS/Happiness_Behavior_Diagnostic_Test.rb'
 
 module THEHOWOfHAPPINESS
   # Your code goes here...
@@ -33,7 +33,7 @@ while i != 0 do
   when 1 then
     happiness_scale = THEHOWOfHAPPINESS::Happiness_scale.new()
   when 2 then
-
+    happiness_behavior_diagnostic_test = THEHOWOfHAPPINESS::Happiness_Behavior_Diagnostic_Test.new()
   when 3 then
 
   when 4 then

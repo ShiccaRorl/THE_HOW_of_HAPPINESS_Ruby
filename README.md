@@ -22,7 +22,10 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+ISBN:978-4-534-04925-4
+「幸せがずっと続く１２の行動習慣」
+にある、行動習慣のプログラムです。
+
 
 ## Development
 
