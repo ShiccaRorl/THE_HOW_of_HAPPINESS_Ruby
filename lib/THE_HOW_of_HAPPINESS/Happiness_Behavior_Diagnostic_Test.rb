@@ -101,7 +101,7 @@ module THEHOWOfHAPPINESS
       print "結果 :" + self.result().to_s
       print '
 
-      平均点　4.5～5.0
+
       '
       @data[6] = self.result().to_s
 
