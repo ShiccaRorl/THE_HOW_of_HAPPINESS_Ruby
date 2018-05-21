@@ -9,6 +9,7 @@ require 'csv'
 require 'THE_HOW_of_HAPPINESS/Happiness_scale.rb'
 require 'THE_HOW_of_HAPPINESS/Happiness_Behavior_Diagnostic_Test.rb'
 require 'THE_HOW_of_HAPPINESS/Oxford_happiness_survey.rb'
+require 'THE_HOW_of_HAPPINESS/Appreciation_diary.rb'
 
 module THEHOWOfHAPPINESS
   # Your code goes here...
@@ -38,7 +39,7 @@ while i != 0 do
   when 3 then
     oxford_happiness_survey = THEHOWOfHAPPINESS::Oxford_happiness_survey.new()
   when 4 then
-
+    appreciation_diary = THEHOWOfHAPPINESS::Appreciation_diary.new()
   when 0 then
 
   else

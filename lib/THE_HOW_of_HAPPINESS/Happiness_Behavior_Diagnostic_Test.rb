@@ -6,7 +6,7 @@ module THEHOWOfHAPPINESS
   class Happiness_Behavior_Diagnostic_Test
     def initialize()
       #i = 0
-      @data = Array.new(12).map{Array.new(6,0)}
+      @data = Array.new(13).map{Array.new(6,0)}
       #while i <= 12 do
         #s = 0
         #while s <= 5 do
@@ -61,35 +61,60 @@ module THEHOWOfHAPPINESS
 
     end
 
+    def search_rand()
+      i = false
+        @data.each{|data|
+          if data[0] == 0 then
+            return true
+          end
+        }
+      return i
+    end
+
     def run()
-      while @data.find{|data| data[0][0] == 0}[0] == 0 do
-        i = rand(12)
+
+      i = rand(13)
+      #while @data.find{|data| data[0][0] == 0}[0] == 0 do
+      while self.search_rand() == true do
+        i = rand(13)
 
         if @data[i][0] == 0 then
           case i
           when 1 then
+            @data[i][0] = Time.now.strftime("%F %T")
             self.one()
           when 2 then
+            @data[i][0] = Time.now.strftime("%F %T")
             self.two()
           when 3 then
+            @data[i][0] = Time.now.strftime("%F %T")
             self.three()
           when 4 then
+            @data[i][0] = Time.now.strftime("%F %T")
             self.four()
           when 5 then
+            @data[i][0] = Time.now.strftime("%F %T")
               self.five()
           when 6 then
+            @data[i][0] = Time.now.strftime("%F %T")
               self.six()
           when 7 then
+            @data[i][0] = Time.now.strftime("%F %T")
               self.seven()
           when 8 then
+            @data[i][0] = Time.now.strftime("%F %T")
               self.eight()
           when 9 then
+            @data[i][0] = Time.now.strftime("%F %T")
               self.nine()
           when 10 then
+            @data[i][0] = Time.now.strftime("%F %T")
               self.ten()
           when 11 then
+            @data[i][0] = Time.now.strftime("%F %T")
               self.eleven()
           when 12 then
+            @data[i][0] = Time.now.strftime("%F %T")
               self.twelve()
           else
 
@@ -97,32 +122,38 @@ module THEHOWOfHAPPINESS
         end
       end
 
-      print ""
-      print "結果 :" + self.result().to_s
-      print '
-
-
-      '
-      @data[6] = self.result().to_s
-
-=begin
-open('Happiness_scale.csv', "w:UTF-8") do |f|
-  CSV.new(f).each do |row|
-    # ...
-  end
-
-end
-=end
       begin
         # ファイルへ書き込み
-        CSV.open("Happiness_Behavior_Diagnostic_Test.csv", "a:UTF-8") do |csv|
-          csv << @data
+        #CSV.open("Happiness_Behavior_Diagnostic_Test.csv", "a:UTF-8") do |csv|
+          open("Happiness_Behavior_Diagnostic_Test.csv", "a:UTF-8") do |csv|
+          #csv = @data[1][6] + "," + @data[2][6] + "," + @data[3][6] + "," + @data[4][6] + "," + @data[5][6] + "," + @data[6][6] + "," + @data[7][6] + "," + @data[8][6] + "," + @data[9][6] + "," + @data[10][6] + "," + @data[11][6] + "," + @data[12][6]
+
+csv << @data[0][0].to_s + ","
+csv << @data[1][6].to_s + ","
+csv << @data[2][6].to_s + ","
+csv << @data[3][6].to_s + ","
+csv << @data[4][6].to_s + ","
+csv << @data[5][6].to_s + ","
+csv << @data[6][6].to_s + ","
+csv << @data[7][6].to_s + ","
+csv << @data[8][6].to_s + ","
+csv << @data[9][6].to_s + ","
+csv << @data[10][6].to_s + ","
+csv << @data[11][6].to_s + ","
+csv << @data[12][6].to_s + "\n"
+
         end
       rescue
-        p "書き込みエラー".encode(Encoding::SJIS)
+        print "書き込みエラー\n".encode(Encoding::SJIS)
       end
 
-    self.top()
+
+      print ""
+      print "結果 :\n"
+      print "\n"
+      self.result()
+
+      self.top()
 
     end
 
@@ -164,7 +195,19 @@ end
 
       CSV.new(f).each do |row|
         # ...
-        print row[0] + " 幸福度 : " + row[5] + "\n"
+        print row[0] + "  「幸福になるための１２の行動」: \n"
+        print '感謝の気持ちを表す                :' + row[1].to_s + "\n"
+        print '楽感的な気持ちを高める            :' + row[2].to_s + "\n"
+        print '考え過ぎない、他人と比較しない     :' + row[3].to_s + "\n"
+        print '人に親切にする                    :' + row[4].to_s + "\n"
+        print '人間関係を育む                    :' + row[5].to_s + "\n"
+        print '問題に立ち向かうための対策をとる    :' + row[6].to_s + "\n"
+        print '人を許す                          :' + row[7].to_s + "\n"
+        print '心から打ち込める活動を増やす        :' + row[8].to_s + "\n"
+        print '人生の喜びを深く味わう             :' + row[9].to_s + "\n"
+        print '目標の達成に全力を尽くす           :' + row[10].to_s + "\n"
+        print '宗教はスピリチュアルなものに関わる  :' + row[11].to_s + "\n"
+        print '身体を大切にする                   :' + row[12].to_s + "\n\n\n"
       end
 
     end
@@ -484,11 +527,19 @@ def twelve()
 end
 
     def result()
-      p @data
 
-      @data.sort!{|a, b| a[6] <=> b[6] }
-
-      p @data
+      print '感謝の気持ちを表す                :' + @data[1][6].to_s + "\n"
+      print '楽感的な気持ちを高める            :' + @data[2][6].to_s + "\n"
+      print '考え過ぎない、他人と比較しない     :' + @data[3][6].to_s + "\n"
+      print '人に親切にする                    :' + @data[4][6].to_s + "\n"
+      print '人間関係を育む                    :' + @data[5][6].to_s + "\n"
+      print '問題に立ち向かうための対策をとる    :' + @data[6][6].to_s + "\n"
+      print '人を許す                          :' + @data[7][6].to_s + "\n"
+      print '心から打ち込める活動を増やす        :' + @data[8][6].to_s + "\n"
+      print '人生の喜びを深く味わう             :' + @data[9][6].to_s + "\n"
+      print '目標の達成に全力を尽くす           :' + @data[10][6].to_s + "\n"
+      print '宗教はスピリチュアルなものに関わる  :' + @data[11][6].to_s + "\n"
+      print '身体を大切にする                   :' + @data[12][6].to_s + "\n"
 
       #return
     end
